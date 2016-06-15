@@ -1,0 +1,4 @@
+com\project\filter\usecases\InvitedRules.class
+com\project\filter\Application.class
+com\project\filter\config\SwaggerConfiguration.class
+com\project\filter\http\InvitedController.class
