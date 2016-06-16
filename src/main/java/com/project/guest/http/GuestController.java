@@ -18,23 +18,23 @@ import java.util.Collection;
 @Slf4j
 public class GuestController {
 
-    private final ConvertFileToGuest convertFileToInvited;
-    private final GuestRules invitedRules;
+    private final ConvertFileToGuest convertFileToGuest;
+    private final GuestRules guestRules;
 
     @Autowired
     public GuestController(final ConvertFileToGuest convertFileToInvited, final GuestRules invitedRules) {
-        this.convertFileToInvited = convertFileToInvited;
-        this.invitedRules = invitedRules;
+        this.convertFileToGuest = convertFileToInvited;
+        this.guestRules = invitedRules;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public void generatePositionChair(
+    public void classifyGuest(
         @RequestHeader(name = "file_path", required = true) final String filePath){
         log.info("Caminho do Arquivo {}", filePath);
-        Collection<Guest> inviteds = convertFileToInvited.convert(filePath);
-        log.info("tamanho arquivo {}", inviteds.size());
-        //invitedRules.classifyInvited(inviteds);
+        Collection<Guest> guests = convertFileToGuest.convert(filePath);
+        log.info("tamanho arquivo {}", guests.size());
+        guestRules.classify(guests);
     }
 
 

@@ -1,5 +1,6 @@
 package com.project.guest.converter;
 
+import com.project.guest.domains.Gender;
 import com.project.guest.domains.Guest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -19,30 +20,29 @@ import java.util.List;
 public class ConvertFileToGuest {
 
     public Collection<Guest> convert(String filePath){
-        List<Guest> inviteds = new ArrayList<>();
-        String content = null;
+        List<Guest> guests = new ArrayList<>();
         try {
             List<String> lines = Files.readAllLines(Paths.get(filePath));
             for (String line : lines) {
                 String[] lineSplited = line.split("\\t");
-                Guest invited = new Guest();
-                invited.setId(Integer.parseInt(lineSplited[0]));
-                invited.setFullName(lineSplited[1]);
-                invited.setHeight(Float.parseFloat(lineSplited[2]));
-                invited.setGender(lineSplited[3]);
-                invited.setAge(lineSplited[4]);
-                invited.setNeighborhood(lineSplited[5]);
-                invited.setCity(lineSplited[6]);
-                invited.setCongregation(lineSplited[7]);
-                invited.setChapel(lineSplited[8]);
-                invited.setNickName(lineSplited[9]);
-                inviteds.add(invited);
+                Guest guest = new Guest();
+                guest.setId(Integer.parseInt(lineSplited[0]));
+                guest.setFullName(lineSplited[1]);
+                guest.setHeight(Float.parseFloat(lineSplited[2]));
+                guest.setGender(Gender.findGender(lineSplited[3]));
+                guest.setAge(lineSplited[4]);
+                guest.setNeighborhood(lineSplited[5]);
+                guest.setCity(lineSplited[6]);
+                guest.setCongregation(lineSplited[7]);
+                guest.setChapel(lineSplited[8]);
+                guest.setNickName(lineSplited[9]);
+                guests.add(guest);
             }
 
         } catch (IOException e) {
             log.error("Error to try open file",e);
         }
-        return inviteds;
+        return guests;
 
     }
 }

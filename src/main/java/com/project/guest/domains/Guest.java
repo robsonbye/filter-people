@@ -11,7 +11,7 @@ public class Guest {
     String fullName;
     String nickName;
     Float height;
-    String gender;
+    Gender gender;
     String age;
     //bairro
     String neighborhood;
@@ -20,4 +20,5 @@ public class Guest {
     String congregation;
     //capela
     String chapel;
+
 }
