@@ -1,4 +1,4 @@
-package com.project.invited.config;
+package com.project.guest.config;
 
 import com.google.common.collect.Lists;
 import org.springframework.context.annotation.Bean;
@@ -94,7 +94,7 @@ public class SwaggerConfiguration {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Filter")
+                .title("Filter Guest")
                 .version("1.0")
                 .build();
     }

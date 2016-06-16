@@ -1,4 +1,4 @@
-package com.project.invited;
+package com.project.guest;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
