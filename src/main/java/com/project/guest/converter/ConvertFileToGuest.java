@@ -19,7 +19,7 @@ import java.util.List;
 @Component
 public class ConvertFileToGuest {
 
-    public Collection<Guest> convert(String filePath){
+    public Collection<Guest> convert(final String filePath){
         List<Guest> guests = new ArrayList<>();
         try {
             List<String> lines = Files.readAllLines(Paths.get(filePath));

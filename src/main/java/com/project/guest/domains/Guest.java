@@ -7,18 +7,19 @@ import lombok.Data;
  */
 @Data
 public class Guest {
-    Integer id;
-    String fullName;
-    String nickName;
-    Float height;
-    Gender gender;
-    String age;
+    private Integer id;
+    private String fullName;
+    private String nickName;
+    private Float height;
+    private Gender gender;
+    private String age;
     //bairro
-    String neighborhood;
-    String city;
+    private String neighborhood;
+    private String city;
     //paróquia
-    String congregation;
+    private String congregation;
     //capela
-    String chapel;
+    private String chapel;
+    private Integer chairNumber;
 
 }

@@ -20,6 +20,7 @@ public class GuestController {
 
     private final ConvertFileToGuest convertFileToGuest;
     private final GuestRules guestRules;
+    private int chairNumber1 = 1;
 
     @Autowired
     public GuestController(final ConvertFileToGuest convertFileToInvited, final GuestRules invitedRules) {
@@ -34,8 +35,12 @@ public class GuestController {
         log.info("Caminho do Arquivo {}", filePath);
         Collection<Guest> guests = convertFileToGuest.convert(filePath);
         log.info("tamanho arquivo {}", guests.size());
-        guestRules.classify(guests);
+        Collection<Guest> guestsClassified = guestRules.classify(guests);
+        log.info("lista ordenada");
+
+        guestsClassified.forEach(System.out::println);
     }
+
 
 
 }
