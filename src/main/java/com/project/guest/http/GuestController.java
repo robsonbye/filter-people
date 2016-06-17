@@ -20,7 +20,6 @@ public class GuestController {
 
     private final ConvertFileToGuest convertFileToGuest;
     private final GuestRules guestRules;
-    private int chairNumber1 = 1;
 
     @Autowired
     public GuestController(final ConvertFileToGuest convertFileToInvited, final GuestRules invitedRules) {
@@ -31,7 +30,7 @@ public class GuestController {
     @RequestMapping(method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public void classifyGuest(
-        @RequestHeader(name = "file_path", required = true) final String filePath){
+        @RequestHeader(name = "file_path") final String filePath){
         log.info("Caminho do Arquivo {}", filePath);
         Collection<Guest> guests = convertFileToGuest.convert(filePath);
         log.info("tamanho arquivo {}", guests.size());

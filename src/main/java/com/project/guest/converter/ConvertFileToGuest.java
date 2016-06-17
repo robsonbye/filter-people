@@ -8,9 +8,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by robson.andrade on 16/06/2016.
@@ -24,18 +22,19 @@ public class ConvertFileToGuest {
         try {
             List<String> lines = Files.readAllLines(Paths.get(filePath));
             for (String line : lines) {
-                String[] lineSplited = line.split("\\t");
+                List<String> lineSplited = new ArrayList<String>(Arrays.asList(line.split("\\t")));
                 Guest guest = new Guest();
-                guest.setId(Integer.parseInt(lineSplited[0]));
-                guest.setFullName(lineSplited[1]);
-                guest.setHeight(Float.parseFloat(lineSplited[2]));
-                guest.setGender(Gender.findGender(lineSplited[3]));
-                guest.setAge(lineSplited[4]);
-                guest.setNeighborhood(lineSplited[5]);
-                guest.setCity(lineSplited[6]);
-                guest.setCongregation(lineSplited[7]);
-                guest.setChapel(lineSplited[8]);
-                guest.setNickName(lineSplited[9]);
+                Iterator<String> lineIterator = lineSplited.iterator();
+                guest.setId(Integer.parseInt(lineIterator.next()));
+                guest.setFullName(lineIterator.next());
+                guest.setHeight(Float.parseFloat(lineIterator.next()));
+                guest.setGender(Gender.findGender(lineIterator.next()));
+                guest.setAge(lineIterator.next());
+                guest.setNeighborhood(lineIterator.next());
+                guest.setCity(lineIterator.next());
+                guest.setCongregation(lineIterator.next());
+                guest.setChapel(lineIterator.next());
+                guest.setNickName(lineIterator.next());
                 guests.add(guest);
             }
 
