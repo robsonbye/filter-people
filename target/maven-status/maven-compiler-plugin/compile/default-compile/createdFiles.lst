@@ -1,7 +1,0 @@
-com\project\guest\Application.class
-com\project\guest\domains\Guest.class
-com\project\guest\converter\ConvertFileToGuest.class
-com\project\guest\domains\Gender.class
-com\project\guest\http\GuestController.class
-com\project\guest\config\SwaggerConfiguration.class
-com\project\guest\usecases\GuestRules.class
